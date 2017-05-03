@@ -28,6 +28,9 @@ else
     echo "kubectl already installed"
 fi
 
+echo "Creating new kubernetes namespace for $USER"
+kubectl create namespace $USER -o yaml  > $USER/namespace.yaml
+
 echo "Creating remote dashboard"
 kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/kubernetes-dashboard-no-rbac.yaml
 

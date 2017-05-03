@@ -1,0 +1,40 @@
+version: '2.1'
+services:
+  api:
+    build:
+      context: .
+    container_name: shadow-it-reporting
+    command: uwsgi --ini /etc/uwsgi.ini --http :8040 --workers 1
+    ports:
+      - 8040:8040
+    volumes:
+      - "${PWD}:/shadow_reporting"
+    stop_signal: SIGQUIT
+    depends_on:
+      - etcd
+      - redis
+      - db
+    environment:
+      REDIS_HOST: 'redis'
+      ETCD_HOST: 'etcd'
+  etcd:
+    image: "quay.io/coreos/etcd:v2.3.6"
+    container_name: shadow_etcd
+    ports:
+      - 2379:2379
+    command: [--listen-client-urls, 'http://0.0.0.0:2379,http://0.0.0.0:4001', --advertise-client-urls, 'http://0.0.0.0:2379' ]
+    restart: unless-stopped
+  redis:
+    container_name: shadow_redis
+    image: "redis:2.8"
+    ports:
+      - 6379:6379
+    restart: unless-stopped
+  db:
+    image: postgres:9.5.6
+    container_name: shadow-reporting-db
+    ports:
+      - 5436:5432
+    environment:
+      POSTGRES_DB: sit_reporting
+      POSTGRES_USER: sit_reporting_user

@@ -1,0 +1,2 @@
+kubectl apply -f ./
+find . -name '*py' | entr -r bash -c 'docker-compose up web'

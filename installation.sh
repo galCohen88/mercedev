@@ -29,6 +29,16 @@ else
     echo "kubectl already installed"
 fi
 
+echo "Checking for entr installed"
+
+brew ls --versions entr > /dev/null;
+if [[ $? != 0 ]] ; then
+    echo "Installing entr"
+    brew install entr
+else
+    echo "entr already installed"
+fi
+
 echo "Creating new kubernetes namespace for $USER"
 kubectl create namespace $USER -o yaml  > namespaces/$USER/namespace.yaml
 

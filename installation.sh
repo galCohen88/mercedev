@@ -1,4 +1,5 @@
 brew update
+terraform --version
 brew install terraform
 brew install kops
 brew install kubectl

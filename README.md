@@ -25,3 +25,5 @@ kubectl config view (returns user & password for environment)
 create remote dashboard 
 kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/kubernetes-dashboard-no-rbac.yaml
 
+kubectl create namespace $USER -o yaml  > namespace.yaml
+kubectl create -f ./

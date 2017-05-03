@@ -42,3 +42,4 @@ echo "\n\n************************************************************"
 echo "Dashboard user: ${dashboardUser}"
 echo "Dashboard password: ${dashboardPass}"
 echo "************************************************************\n\n"
+

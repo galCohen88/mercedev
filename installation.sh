@@ -35,3 +35,12 @@ kubectl create namespace $USER -o yaml  > namespaces/$USER/namespace.yaml
 echo "Creating remote dashboard"
 kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/kubernetes-dashboard-no-rbac.yaml
 
+dashboardPass="$(kubectl config view -o jsonpath='{.users[?(@.name == "devkube.cloudlockng.com")].user.password}')"
+dashboardUser="$(kubectl config view -o jsonpath='{.users[?(@.name == "devkube.cloudlockng.com")].user.username}')"
+
+kubectl cluster-info
+
+echo "\n\n************************************************************"
+echo "Dashboard user: ${dashboardUser}"
+echo "Dashboard password: ${dashboardPass}"
+echo "************************************************************\n\n"

@@ -55,8 +55,9 @@ resource "aws_autoscaling_group" "master-eu-central-1a-masters-devkube-cloudlock
 resource "aws_autoscaling_group" "nodes-devkube-cloudlockng-com" {
   name                 = "nodes.devkube.cloudlockng.com"
   launch_configuration = "${aws_launch_configuration.nodes-devkube-cloudlockng-com.id}"
-  max_size             = 2
-  min_size             = 2
+  max_size             = 10
+  min_size             = 1
+  desired_capacity     = 1
   vpc_zone_identifier  = ["${aws_subnet.eu-central-1a-devkube-cloudlockng-com.id}"]
 
   tag = {

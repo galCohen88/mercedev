@@ -73,6 +73,16 @@
       "Resource": [
         "arn:aws:s3:::kubernetes-kops-cluster"
       ]
+    },
+    {
+    "Effect": "Allow",
+    "Action": [
+        "autoscaling:DescribeAutoScalingGroups",
+        "autoscaling:DescribeAutoScalingInstances",
+        "autoscaling:SetDesiredCapacity",
+        "autoscaling:TerminateInstanceInAutoScalingGroup"
+    ],
+    "Resource": "*"
     }
   ]
 }

@@ -1,5 +1,6 @@
 echo "Creating env dirs"
-mkdir $USER
+mkdir namespaces
+mkdir namespaces/$USER
 
 echo "Checking for Terraform installed"
 brew ls --versions terraform > /dev/null;
@@ -29,7 +30,7 @@ else
 fi
 
 echo "Creating new kubernetes namespace for $USER"
-kubectl create namespace $USER -o yaml  > $USER/namespace.yaml
+kubectl create namespace $USER -o yaml  > namespaces/$USER/namespace.yaml
 
 echo "Creating remote dashboard"
 kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/kubernetes-dashboard-no-rbac.yaml

@@ -1,29 +1,7 @@
-# mercedev
-Developers' ultimate work environment 
 
-#### Terraform 
 
-Objectives
+#### create the service
+kubectl create -f ./services/nginx/
 
-* Deploy new environment 
-* creating new instances 
-
-$ terraform plan
-$ terraform destroy
-
-$ echo $USER 
-this is the user name will be used for all the env instances launched
-
-#### Kubernetes
-
-kubectl config get-clusters
-
-kubectl cluster-info (returns dns)
-
-kubectl config view (returns user & password for environment)
-
-create remote dashboard 
-kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/kubernetes-dashboard-no-rbac.yaml
-
-kubectl create namespace $USER -o yaml  > namespace.yaml
-kubectl create -f ./
+#### delete the service
+kubectl delete -f ./services/nginx/

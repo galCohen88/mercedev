@@ -3,23 +3,23 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    run: hello-world
-  name: hello-world
+    run: dev-nginx
+  name: dev-nginx
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
-      run: hello-world
+      run: dev-nginx
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        run: hello-world
+        run: dev-nginx
     spec:
       containers:
-      - image: tutum/hello-world
-        name: hello-world
+      - image: nginx
+        name: dev-nginx
         ports:
         - containerPort: 80
         resources: {}

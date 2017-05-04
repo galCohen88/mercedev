@@ -48,8 +48,8 @@ dashboardUser="$(kubectl config view -o jsonpath='{.users[?(@.name == "devkube.c
 
 kubectl cluster-info
 
-echo "\n\n************************************************************"
+echo "************************************************************"
 echo "Dashboard user: ${dashboardUser}"
 echo "Dashboard password: ${dashboardPass}"
-echo "************************************************************\n\n"
+echo "************************************************************"
 
